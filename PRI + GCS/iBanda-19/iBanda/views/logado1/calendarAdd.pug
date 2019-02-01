@@ -1,0 +1,64 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            br
+            ul.nav.flex-column
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/band') A Banda 
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/calendar') Calendário
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/news') Noticias
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/repertoire') Repertório
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/users') Utilizadores
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/information') Informações
+            br
+            h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+                span Opções
+            ul.nav.flex-column.mb-2
+                li.nav-item
+                    a.nav-link(href='#')
+                        span(data-feather='plus')
+                        |                   Adicionar Evento
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/1/calendar/remove')
+                        span(data-feather='trash-2')
+                        |                   Remover Evento
+    main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
+        br
+        form(action="/1/calendar/add", method="post")
+            h3
+                small.text-muted
+                    b Insira os dados para adicionar um evento:
+            .form-group
+            label Nome:
+            input.form-control(type='text', placeholder='Nome do Evento', name="nome", required)
+            br
+            .form-row
+                .form-group.col-md-6
+                    label Data:
+                    input.form-control(type='date', name= "data", required)
+                .form-group.col-md-6
+                    label Local:
+                    input.form-control(type='text', placeholder='Local do Evento', name="local", required)
+            .form-row
+                .form-group.col-md-6
+                    label Tipo do Evento:
+                        select.form-control(name= "tipo")
+                            option Concerto
+                            option Reunião
+                            option Convívio
+                .form-group.col-md-6
+                    label Link para comprar bilhetes (https:// URL):
+                    input.form-control(type='url', name="url" placeholder="https://example.com" pattern="https://.*" size="30" required)
+            hr  
+            button.btn-outline-secondary.btn-sm(type="submit") Adicionar Evento
+        script.
+            feather.replace()

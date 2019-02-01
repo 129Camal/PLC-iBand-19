@@ -1,0 +1,143 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            br
+            ul.nav.flex-column
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/2/band') A Banda 
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/2/calendar') Calendário
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/2/news') Noticias
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/2/repertoire') Repertório
+            br
+            h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+                span Opções
+            ul.nav.flex-column.mb-2
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/2/repertoire/add')
+                        span(data-feather='plus')
+                        |                   Adicionar Música
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/2/repertoire/remove')
+                        span(data-feather='trash-2')
+                        |                   Remover Música
+                li.nav-item
+                    a.nav-link(href='#')
+                        span(data-feather='settings')
+                        |                   Atualizar Música
+
+    main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
+      br
+      br
+      include ../messages.pug
+      each obra in obras
+        .card.border-dark.mb-3
+          h5.card-header.h5
+            b Titulo:
+          .card-body
+            h5.card-title #{obra.titulo}
+        .card.border-dark.mb-3
+          h5.card-header.h5 
+            b Tipo:
+          .card-body
+            h5.card-title #{obra.tipo}
+        .card.border-dark.mb-3
+          h5.card-header.h5
+            b Compositor:
+          .card-body
+            h5.card-title #{obra.compositor}
+        if obra.arranjo
+          .card.border-dark.mb-3
+            h5.card-header.h5 
+              b Arranjo:
+            .card-body
+              h5.card-title #{obra.arranjo}
+        hr
+        h5
+                small.text-muted
+                    b Selecione os instrumentos que pretende eliminar:
+        form(action="/2/repertoire/updateRem/" + obra._id +"/"+ obra.titulo, method="post")
+          .table-responsive
+            table.table.table-striped.table-bordered(id="myTable")
+              thead
+                tr
+                  th Instrumento
+                  th Voz
+                  th Clave
+                  th Afinação
+                  th #
+              tbody
+                each instrumento in obra.instrumentos
+                  tr
+                    td
+                      .form-check
+                        input.form-check-input(type='checkbox', value= instrumento, id="checkbox", name="checkbox")
+                        label.form-check-label
+                        |           #{instrumento.nome}
+                    td= instrumento.partitura.voz
+                    td= instrumento.partitura.clave
+                    td= instrumento.partitura.afinacao
+                    td 
+                      a.btn.btn-secondary.btn-sm(href="http://localhost:4020/2/repertoire?nome=" + obra.titulo + "&path=" + instrumento.partitura.path , role="button" , aria-pressed="true")    
+                        span(data-feather='download')
+          button.btn-outline-secondary.btn-sm(type="submit") Remover Instrumentos
+        hr
+        form(action="/2/repertoire/updateAdd/" + obra._id +"/"+ obra.titulo, method="post", enctype='multipart/form-data')
+          h5
+            small.text-muted
+              b Insira os dados para adicionar instrumentos:
+          .form-group(class="fieldGroup")
+            label Nome:
+            input.form-control(type='text', placeholder='Nome do instrumento', name="nome")
+            br 
+            label(for="partitura") Partitura
+            .form-row(id="partitura")
+              .form-group.col-md-6
+                label Voz:
+                input.form-control(type='text', placeholder='Voz', name= "voz")
+              .form-group.col-md-6
+                label Clave:
+                input.form-control(type='text', placeholder='Clave', name="clave")
+              .form-row
+                .form-group.col-md-6
+                  label Afinação:
+                  input.form-control(type='text', placeholder='Afinação', name="afinacao")
+                .form-group.col-md-6
+                  label Ficheiro:
+                  input.form-control-file(type='file', name="file" required)
+                a.btn.btn-secondary.btn-sm(href="javascript:void(0)" class="addMore")
+                  span(data-feather="plus")  
+          hr  
+          button.btn-outline-secondary.btn-sm(type="submit" style="float:right;") Adicionar Instrumentos
+        //- Para chamar depois!    
+        .form-group(class="fieldGroupCopy" style="display:none;")
+          label Nome:
+          input.form-control(type='text', placeholder='Nome do instrumento', name="nome")
+          br 
+          label Partitura
+          .form-row
+            .form-group.col-md-6
+              label Voz:
+              input.form-control(type='text', placeholder='Voz', name= "obra")
+            .form-group.col-md-6
+              label Clave:
+              input.form-control(type='text', placeholder='Clave', name="clave")
+            .form-row
+              .form-group.col-md-6
+                label Afinação:
+                input.form-control(type='text', placeholder='Afinação', name="afinacao")
+              .form-group.col-md-6
+                label Ficheiro:
+                input.form-control-file(type='file', name="file" required)
+              a.btn.btn-secondary.btn-sm(href="javascript:void(0)" class="remove")
+                span(data-feather="trash-2") 
+            hr      
+      script.
+          feather.replace()
+    script(src="/javascripts/repertoireAdd.js")

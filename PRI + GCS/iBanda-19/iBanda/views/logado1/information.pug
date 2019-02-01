@@ -1,0 +1,54 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            br
+            ul.nav.flex-column
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/band') A Banda
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/calendar') Calendário
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/news') Notícias
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/repertoire') Repertório
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/users') Utilizadores
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/information') Informações
+            br
+        main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main') 
+            br
+            br
+            include ../messages.pug
+            h3 
+                small.text-muted
+                    b Número de Visualizações das Músicas:
+            .table-responsive
+                table.table.table-striped.table-sm
+                    thead
+                        tr
+                            th #
+                            th Titulo
+                            th Tipo
+                            th Compositor
+                            th Arranjo
+                            th Nº Visualizações
+                            th Ver Downloads
+                    tbody
+                        each obra in obras
+                            tr
+                                td         
+                                td= obra.titulo
+                                td= obra.tipo
+                                td= obra.compositor
+                                td= obra.arranjo
+                                td= obra.nVisualizacao
+                                td
+                                    a.btn.btn-secondary.btn-sm(href="http://localhost:4020/1/information/" + obra._id, role="button" , aria-pressed="true")    
+                                        span(data-feather='info')
+            script.
+                feather.replace()

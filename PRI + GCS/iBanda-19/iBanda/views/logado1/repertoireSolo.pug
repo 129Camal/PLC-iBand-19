@@ -1,0 +1,66 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            br
+            ul.nav.flex-column
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/band') A Banda
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/calendar') Calendário
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/news') Noticias
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/repertoire') Repertório
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/users') Utilizadores
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/information') Informações
+            br
+            h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+                span Opções
+            ul.nav.flex-column.mb-2
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/1/repertoire/add')
+                        span(data-feather='plus')
+                        |                   Adicionar Música
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/1/repertoire/remove')
+                        span(data-feather='trash-2')
+                        |                   Remover Música
+                each obra in obras
+                    li.nav-item
+                        a.nav-link(href='http://localhost:4020/1/repertoire/update?id=' + obra._id)
+                            span(data-feather='settings')
+                            |                   Atualizar Música
+
+    main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main') 
+        br
+        br
+        .table-responsive
+            table.table.table-striped.table-bordered(id="myTable")
+                thead
+                    tr
+                        th Instrumento
+                        th Voz
+                        th Clave
+                        th Afinação
+                        th #
+                tbody
+                    each obra in obras
+                        each instrumento in obra.instrumentos
+                            tr
+                                td= instrumento.nome
+                                td= instrumento.partitura.voz
+                                td= instrumento.partitura.clave
+                                td= instrumento.partitura.afinacao
+                                td 
+                                    a.btn.btn-secondary.btn-sm(href="http://localhost:4020/1/repertoire?nome=" + obra.titulo + "&path=" + instrumento.partitura.path + "&idIns=" + instrumento._id , role="button" , aria-pressed="true")    
+                                        span(data-feather='download')
+                                        |                   Download Partitura
+        script.
+            feather.replace()
+        

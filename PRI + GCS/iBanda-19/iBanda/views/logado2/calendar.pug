@@ -1,0 +1,54 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            br
+            ul.nav.flex-column
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/2/band') A Banda
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/2/calendar') Calendário
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/2/news') Notícias
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/2/repertoire') Repertório
+            br
+            h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+                span Opções
+            ul.nav.flex-column.mb-2
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/2/calendar/add')
+                        span(data-feather='plus')
+                        |                   Adicionar Evento
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/2/calendar/remove')
+                        span(data-feather='trash-2')
+                        |                   Remover Evento
+    main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
+        br
+        include ../messages.pug
+        .box
+            .container
+                .row
+                    each event in events
+                        .col-lg-4.col-md-4.col-sm-4.col-xs-12
+                            .box-part.text-center(style="border: 1px solid black;")
+                                i.fa.fa-3x(aria-hidden='true')
+                                .title
+                                    h4 
+                                        b #{event.tipo}
+                                .text
+                                    span
+                                    | #{event.nome}
+                                .text
+                                    span
+                                    | #{event.local}
+                                .text
+                                    span
+                                    | #{event.data}
+                                a.btn-secondary.btn-sm(href=event.bilhetes) Comprar Bilhetes
+        script.
+            feather.replace()

@@ -1,0 +1,92 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Teste</title>
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      
+      <h1 style="text-align:center;">Manifesto do Trabalho Prático</h1>
+      <hr>
+      <hr>
+      <table width="100%" style="text-align:center;">
+         <tr>
+            <td><b>Key Name: </b> PRI2018::a73639::a74658::TP
+            </td>
+            <td><b>Title: </b> Trabalho prático de PRI
+            </td>
+         </tr>
+         <tr>
+            <td><b>Date: </b>1 de Fevereiro 2019
+            </td>
+            <td><b>Supervisor: </b><a href="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</a></td>
+         </tr>
+      </table>
+      
+      <hr>
+      <hr>
+      
+      <h2>WorkTeam:</h2>
+      <table width="100%">
+         
+         <tr>
+            <td>
+               <ul>
+                  <li>a73639 - <b>Frederico Daniel Pereira Pinto</b><p>Email: <a href="mailto:a73639@alunos.uminho.pt">a73639@alunos.uminho.pt</a></p>
+                     <p>Link GitHub: <a href="https://github.com/129Camal">GitHub</a></p>
+                  </li>
+               </ul>
+            </td>
+            <td><img src="frederico.png" width="120" height="120"></td>
+         </tr>
+         <tr>
+            <td>
+               <ul>
+                  <li>a74658 - <b>Rui Filipe Silva Vieira</b><p>Email: <a href="mailto:a74658@alunos.uminho.pt">a74658@alunos.uminho.pt</a></p>
+                     <p>Link GitHub: <a href="https://github.com/tchabs">GitHub</a></p>
+                  </li>
+               </ul>
+            </td>
+            <td><img src="rui.jpg" width="120" height="120"></td>
+         </tr>
+         
+      </table>
+      <hr>
+      <hr>
+      <p>Link GitHub onde se encontra o trabalho: <a href="https://github.com/129Camal/TP-iBand">GitHub</a></p>
+      
+      <h2>Abstract:</h2>
+
+      <p>Decidimos utilizar <i>BootStrap</i> para fazer as views em <i>Pug</i>. Possuimos também quatro coleções na base de dados em MongoDB, (users, works, calendar e news) cada uma desta tem os seus modelos, controladores e consequentemente rotas API para ir buscar a meta-informação à base de dados.</p>
+      <p>Temos 3 tipos de utilizador (consumidor, produtor e administrador) em que temos uma rota para cada, fazendo autenticação usando o <i>Passport</i>. Para previnir que utilizadores que efetuaram o login acedam a rotas que não lhe pertencem verificamos sempre qual o tipo de utilizador logado que está a fazer o pedido no <i>req.user</i>.</p>
+      <p>O consumidor apenas pode visualizar os conteúdos, já o produtor pode adicionar/remover conteúdo e com isto as operações consequentes são efetuadas à base de dados e ao file system.</p>
+      <p>Já o administrador pode efetuar todas as operações do produtor e para além disso, tem a possibilidade de gerir os utilizadores(adicionar, remover, alterar) e ver estatisticas de utilização da aplicação como, número de visualizações de cada obra e número de downloads das partituras de cada obra.</p>
+      <p>Para além disso, nas adições das obras por parte do produtor/administrador utilizamos <i>JQuery</i> para aliviar carga do servidor, permitindo assim ao utilizador criar mais campos para adicionar instrumentos relativos à obra em inserção.</p>
+      <p>Por fim, também utilizamos o <i>Winston</i> para guardar os logs num ficheiro de texto para assim ter acesso a qualquer momento.</p>
+      <p>Para carregar os ficheiros das obras para a base de dados, tem que se utilizar a função presente na promessa na ligação à base de dados, para colocar os documentos na base de dados de maneira a criar _id para cada instrumento.</p>
+      <hr>
+      <hr>
+      <h2>Deliverables:</h2>
+      <ul>
+         
+         <li><a href="../iBanda-19/iBanda/app.js">Appjs do projeto;</a></li>
+         
+         <li><a href="../iBanda-19/iBanda/routes">Pasta das Rotas;</a></li>
+         
+         <li><a href="../iBanda-19/iBanda/config">Pasta com ficheiros para tratar da autenticação;</a></li>
+
+         <li><a href="../iBanda-19/iBanda/models">Pasta com os modelos criados;</a></li>
+         
+         <li><a href="../iBanda-19/iBanda/controllers">Pasta com os controladores;</a></li>
+
+         <li><a href="../iBanda-19/iBanda/views">Pasta com todas as views;</a></li>
+         
+         <li><a href="../iBanda-19/iBanda/public/javascripts/repertoireAdd.js">JQuery desenvolvido para a parte de adicionar instrumentos;</a></li>
+
+         <li><a href="../iBanda-19/iBanda/logs/app.log">Ficheiro com os logs;</a></li>
+      </ul>
+      <hr>
+      <hr>
+      
+   </body>
+</html>

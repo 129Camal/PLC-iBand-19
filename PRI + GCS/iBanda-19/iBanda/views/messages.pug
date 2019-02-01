@@ -1,0 +1,9 @@
+if (success_msg.length > 0)
+    div.alert.alert-success.fade.show(role="alert")
+        strong= success_msg
+        button.close(type="button" data-dismiss="alert")
+        
+if (error.length > 0)
+    div.alert.alert-warning.alert-dismissible.fade.show(role="alert")
+        strong= error
+        button.close(type="button" data-dismiss="alert")

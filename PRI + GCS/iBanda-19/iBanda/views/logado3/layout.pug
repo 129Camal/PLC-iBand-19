@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title= title
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js")
+    script(src="https://unpkg.com/feather-icons/dist/feather.min.js")
+    script(src="/javascripts/jquery-3.3.1.min.js")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    
+
+  body
+    nav.navbar.navbar-dark.fixed-top.bg-dark.flex-md-nowrap.p-0.shadow
+      a.navbar-brand.col-sm-3.col-md-2.mr-0(href='http://localhost:4020/3') Banda Filarmónica (iBanda)
+      
+      div
+        a.btn.btn-outline-light.btn-sm(href='http://localhost:4020/users/logout' role="button" aria-pressed="true" style="display: block;width:100%") Logout
+        .dropdown.show
+          button.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Account
+          .dropdown-menu.dropdown-menu-right(aria-labelledby='dropdownMenuButton')
+              a.dropdown-item(href='http://localhost:4020/users/changePassword') Change Password
+    block content
+  

@@ -1,0 +1,58 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            br
+            ul.nav.flex-column
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/2/band') A Banda
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/2/calendar') Calendário
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/2/news') Noticias
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/2/repertoire') Repertório
+            br
+            h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+                span Opções
+            ul.nav.flex-column.mb-2
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/2/calendar/add')
+                        span(data-feather='plus')
+                        |                   Adicionar Evento 
+                li.nav-item
+                    a.nav-link(href='#')
+                        span(data-feather='trash-2')
+                        |                   Remover Evento
+    main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
+      br
+      br
+      h3 
+                small.text-muted
+                    b Selecione os eventos que pretende eliminar:
+      form(action="/2/calendar/remove" method="POST")
+        .table-responsive
+          table.table.table-striped.table-sm(id="myTable")
+            thead
+              tr
+              th Nome
+              th Tipo
+              th Data
+              th Local
+            tbody
+              each event in events
+                tr
+                  td  
+                    .form-check
+                      input.form-check-input(type='checkbox', value=event._id, id="checkbox", name="checkbox")
+                      label.form-check-label
+                      |           #{event.nome}
+                  td= event.tipo
+                  td= event.data
+                  td= event.local
+          button.btn-outline-secondary.btn-sm(type="submit") Remover Evento
+        script.
+            feather.replace()

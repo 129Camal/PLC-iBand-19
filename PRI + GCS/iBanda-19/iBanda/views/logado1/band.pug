@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            br
+            ul.nav.flex-column
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/band') A Banda
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/calendar') Calendário
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/news') Notícias
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/repertoire') Repertório
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/users') Utilizadores
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/information') Informações
+            br
+    include ../band.pug

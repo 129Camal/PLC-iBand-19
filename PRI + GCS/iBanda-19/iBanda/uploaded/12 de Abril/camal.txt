@@ -1,0 +1,32 @@
+p#!/bin/bash
+
+#PBS -N job_matmul       #nome do job que vai aparecer na fila de espera do cluster
+#PBS -l walltime=00:60:00   #tempo maximo a correr  (penso eu)
+#PBS -q mei                 #isto sabes
+
+#PBS -l nodes=1:r662:ppn=48 #isto tambem sabes
+
+module purge        #merdas para limpar os modulos
+module load gcc/4.9.0
+module load papi/5.5.0
+
+cd ~/CPD-19/AA/Trabz  #para onde vao os job_matmul.e e job_matmul.o
+make
+
+FILE="results2.4.txt"  #estas em pl,, se nao sabes isto és burro :D
+
+#--- a partir daqui fazes o que quiseres -------
+
+for j in 32 128 1024 2048
+do
+        echo "-------- Matriz $j x $j------" >> $FILE
+        echo "$1" >> $FILE
+        ./bin/matmul $j >> $FILE   #parte mais importante, aquele $j é so pq eu passo tamm
+anho por argumento, matmul é o meu executavel
+
+        echo "-----------------------" >> $FILE
+        echo "" >> $FILE
+done
+echo "-----------------------" >> $FILE
+
+echo "ACABEI" >> $FILE

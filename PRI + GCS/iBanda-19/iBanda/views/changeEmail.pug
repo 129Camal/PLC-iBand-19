@@ -1,0 +1,14 @@
+main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
+    h3 
+        small.text-muted
+            b Preencha os campos:
+        
+    form(action="/users/changePassword" method="post")
+        .form-row
+            .form-group.col-md-6
+                label Novo Email:
+                input.form-control(type='text', placeholder="Email",name="nova" required)
+            .form-group.col-md-6
+                label Confirmar Palavra-Passe:
+                input.form-control(type='password', name="velha" required)
+        button.btn-outline-secondary.btn-sm(type="submit") Mudar

@@ -1,0 +1,3 @@
+{ "name" : "user2", "email" : "user2", "password" : "$2a$10$8hJAQtOPCkQs6upP.p9f4eBEYBRkgodohZ5AI6alQbvGnAsKHcglm", "userType" : 2 }
+{ "name" : "user1", "email" : "user1", "password" : "$2a$10$B3eLmIKaPp.LUfBR8fLer.sdv0fpgGO7enWLzD3ojCP6yjGrhIIyO", "userType" : 1 }
+{ "name" : "user3", "email" : "user3", "password" : "$2a$10$e7mcNrMcUOFPGA58UUjzG.fDiaGxce1OY7WA.9IZAHu9jn7ul5m7.", "userType" : 3 }

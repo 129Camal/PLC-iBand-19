@@ -1,0 +1,78 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            br
+            ul.nav.flex-column
+              li.nav-item
+                a.nav-link.active(href='http://localhost:4020/1/band') A Banda
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/calendar') Calendário
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/news') Noticias
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/repertoire') Repertório
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/users') Utilizadores
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/information') Informações
+            br
+            h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+                span Opções
+            ul.nav.flex-column.mb-2
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/1/users/add')
+                        span(data-feather='plus')
+                        |                   Adicionar Utilizador
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/1/users/remove')
+                        span(data-feather='trash-2')
+                        |                   Remover Utilizador
+    main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main') 
+        hr
+        include ../messages.pug
+        input.form-control.form-control-dark.w-100(type='text', placeholder='Search for a user email', aria-label='Search', id="myInput", onkeyup="search()")   
+        .table-responsive
+            table.table.table-striped.table-sm(id="myTable")
+                thead
+                    tr
+                        th #
+                        th Nome
+                        th Email
+                        th Password
+                        th Tipo de Utilizador
+                        th Settings
+                tbody
+                    each user in users
+                        tr
+                            td 
+                            td= user.name
+                            td= user.email
+                            td= user.password
+                            td= user.userType
+                            td 
+                                a.btn-outline-secondary(href="http://localhost:4020/1/users/update?id=" + user._id , role="button" , aria-pressed="true" )    
+                                    span(data-feather='settings')
+        script.
+            function search() {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                     tr[i].style.display = "none";
+                        }
+                }       
+            }
+            }
+        script.
+            feather.replace()

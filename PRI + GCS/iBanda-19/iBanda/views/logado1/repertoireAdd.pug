@@ -1,0 +1,111 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            br
+            ul.nav.flex-column
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/band') A Banda 
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/calendar') Calendário
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/news') Noticias
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/repertoire') Repertório
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/users') Utilizadores
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/information') Informações
+            br
+            h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+                span Opções
+            ul.nav.flex-column.mb-2
+                li.nav-item
+                    a.nav-link(href='#')
+                        span(data-feather='plus')
+                        |                   Adicionar Música
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/1/repertoire/remove')
+                        span(data-feather='trash-2')
+                        |                   Remover Música
+
+        main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main') 
+            br
+            br
+            include ../messages.pug
+            h4
+                b Informações sobre a obra:
+            hr
+            form(action="/1/repertoire/add" method="post" enctype='multipart/form-data')
+                .form-row
+                    .form-group.col-md-6
+                        label Título:
+                        input.form-control(type='text', placeholder='Título', name="titulo" required)
+                    .form-group.col-md-6
+                        label Tipo:
+                        input.form-control(type='text', placeholder='Tipo', name="tipo" required)
+                .form-row
+                    .form-group.col-md-6
+                        label Compositor:
+                        input.form-control(type='text', placeholder='Compositor', name="compositor" required)
+                    .form-group.col-md-6
+                        label Arranjo:
+                        input.form-control(type='text', placeholder='Arranjo de', name="arranjo" required)
+                br
+                hr
+                h4
+                    b Instrumentos:
+                .form-group(class="fieldGroup")
+                    label Nome:
+                    input.form-control(type='text', placeholder='Nome do instrumento', name="nome")
+                    br 
+                    label(for="partitura") Partitura
+                    .form-row(id="partitura")
+                        .form-group.col-md-6
+                            label Voz:
+                            input.form-control(type='text', placeholder='Voz', name="voz")
+                        .form-group.col-md-6
+                            label Clave:
+                            input.form-control(type='text', placeholder='Clave', name="clave")
+                    .form-row
+                        .form-group.col-md-6
+                            label Afinação:
+                            input.form-control(type='text', placeholder='Afinação', name="afinacao")
+                        .form-group.col-md-6
+                            label Ficheiro:
+                            input.form-control-file(type='file', name="file" required)
+                    a.btn.btn-secondary.btn-sm(href="javascript:void(0)" class="addMore")
+                        span(data-feather="plus")  
+                    hr  
+                button.btn-outline-secondary.btn-sm(type="submit" style="float:right;") Adicionar Música
+                br
+                br
+            //- Para chamar depois!    
+            .form-group(class="fieldGroupCopy" style="display:none;")
+                label Nome:
+                input.form-control(type='text', placeholder='Nome do instrumento', name="nome")
+                br 
+                label Partitura
+                .form-row
+                    .form-group.col-md-6
+                        label Voz:
+                        input.form-control(type='text', placeholder='Voz', name="voz")
+                    .form-group.col-md-6
+                        label Clave:
+                        input.form-control(type='text', placeholder='Clave', name="clave")
+                .form-row
+                    .form-group.col-md-6
+                        label Afinação:
+                        input.form-control(type='text', placeholder='Afinação', name="afinacao")
+                    .form-group.col-md-6
+                        label Ficheiro:
+                        input.form-control-file(type='file', name="file" required)
+                a.btn.btn-secondary.btn-sm(href="javascript:void(0)" class="remove")
+                    span(data-feather="trash-2") 
+                hr
+            script.
+                feather.replace()
+    script(src="/javascripts/repertoireAdd.js")

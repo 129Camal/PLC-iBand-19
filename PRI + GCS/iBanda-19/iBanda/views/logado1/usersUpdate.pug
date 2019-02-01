@@ -1,0 +1,71 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            br
+            ul.nav.flex-column
+              li.nav-item
+                a.nav-link.active(href='http://localhost:4020/1/band') A Banda
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/calendar') Calendário
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/news') Noticias
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/repertoire') Repertório
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/users') Utilizadores
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/information') Informações
+            br
+            h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+                span Opções
+            ul.nav.flex-column.mb-2
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/1/users/add')
+                        span(data-feather='plus')
+                        |                   Adicionar Utilizador
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/1/users/remove')
+                        span(data-feather='trash-2')
+                        |                   Remover Utilizador
+    main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main') 
+        hr
+        include ../messages.pug
+        .card(style='width: 18rem;')
+          ul.list-group.list-group-flush
+            li.list-group-item 
+              b Nome: 
+              span #{users.name}
+            li.list-group-item 
+              b Email: 
+              span #{users.email}
+            li.list-group-item 
+              b Password: 
+              span #{users.password}
+            li.list-group-item 
+              b Tipo de Utilizador: 
+              span #{users.userType}
+        hr
+        h3 
+          small.text-muted
+            b Preencha apenas os campos que quer atualizar:
+        form(action="/1/users/update/" + users._id, method="post")
+          .form-group.col-md-6
+            label Nome:
+            input.form-control(type="text", name="name", placeholder="O nome do utilizador")
+          .form-group.col-md-6
+            label Email:
+            input.form-control(type="text", name="email", placeholder="Email")
+          .form-group.col-md-6
+            label Password: 
+            input.form-control(type="password", name="password", placeholder="Password")
+          .form-group.col-md-6
+            label Tipo de Utilizador:
+            input.form-control(type="text", name="userType", placeholder="Tipo de Utilizador")
+          button.btn-outline-secondary.btn-sm(type="submit") Atualizar Utilizador
+        br
+        script.
+                feather.replace()

@@ -1,0 +1,13 @@
+DATA: 29/01/2019
+AUTOR: "Rui Vieira"
+TEMA: "Benfica"
+TITULO: {"ÁGUIAS DESTACAM FORMAÇÃO: O FUTURO DO BENFICA ESTÁ ASSEGURADO"} 
+CORPO: {"Através da plataforma News Benfica, o clube da Luz destacou a baixa média de idades da convocatória feita por Bruno Lage para a receção ao Boavista, na noite desta terça-feira.
+
+A convocatória feita por Bruno Lage para o jogo de hoje com o Boavista inclui 6 jogadores formados no Seixal. A cada semana que passa, a cada jornada que se disputa, a cada temporada que se cumpre, aí está a confirmação de que o Benfica e os benfiquistas têm cada vez mais motivos para se orgulharem da capacidade que o clube passou a ter para produzir talento dentro da sua própria casa. 
+
+Os 6 jogadores da formação que foram ontem chamados (Rúben Dias, Alfa Semedo, João Félix, Gedson, Zlobin e Florentino) representam 30% do total da convocatória. Alguns deles já são internacionais A. Outros acabarão por ser. O futuro do Benfica está assegurado por uma geração que se começa a impor, mas também pela qualidade indiscutível das que virão a seguir. 
+
+O talento que emerge no Seixal vem acrescentar valor a um grupo cujo mérito já não se discutia – e que tem ainda a particularidade de ser um dos plantéis mais jovens do futebol português. A média etária dos 20 convocados para hoje está nos 24,35! 
+
+Treze destes jogadores têm 25 ou menos anos e há apenas um caso acima dos 30 (o capitão Jardel). Não é apenas em Portugal que o exemplo do Benfica se distingue. Até nos principais campeonatos europeus é difícil encontrar hoje uma equipa com raízes tão internas e que, ao mesmo tempo, permita projetar um futuro tão risonho."}

@@ -1,0 +1,55 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            br
+            ul.nav.flex-column
+              li.nav-item
+                a.nav-link.active(href='http://localhost:4020/1/band') A Banda
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/calendar') Calendário
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/news') Noticias
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/repertoire') Repertório
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/users') Utilizadores
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/1/information') Informações
+            br
+            h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+                span Opções
+            ul.nav.flex-column.mb-2
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/1/users/add')
+                        span(data-feather='plus')
+                        |                   Adicionar Utilizador
+                li.nav-item
+                    a.nav-link(href='http://localhost:4020/1/users/remove')
+                        span(data-feather='trash-2')
+                        |                   Remover Utilizador
+    main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main') 
+        hr
+        include ../messages.pug
+        form(action="/1/users/add", method="post")
+            .form-group.col-md-6
+                label Nome:
+                input.form-control(type="text", name="name", placeholder="O nome do utilizador" required)
+            .form-group.col-md-6
+                label Email:
+                input.form-control(type="text", name="email", placeholder="Email" required)
+            .form-group.col-md-6
+                label Password: 
+                input.form-control(type="password", name="password", placeholder="Password" required)
+            .form-group.col-md-6
+                label Tipo de Utilizador:
+                select.form-control(name="userType")
+                    option 1
+                    option 2
+                    option 3
+            button.btn-outline-secondary.btn-sm(type="submit") Registar Utilizador
+        script.
+            feather.replace() 

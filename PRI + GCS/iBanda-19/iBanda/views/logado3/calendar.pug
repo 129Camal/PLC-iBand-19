@@ -1,0 +1,43 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            br
+            ul.nav.flex-column
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/3/band') The Band 
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/3/calendar') Calendar
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/3/news') News
+              li.nav-item
+                a.nav-link(href='http://localhost:4020/3/repertoire') Reportoire
+            br
+    main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
+        br
+        include ../messages.pug
+        .box
+            .container
+                .row
+                    each event in events
+                        .col-lg-4.col-md-4.col-sm-4.col-xs-12
+                            .box-part.text-center(style="border: 1px solid black;")
+                                i.fa.fa-3x(aria-hidden='true')
+                                .title
+                                    h4 
+                                        b #{event.tipo}
+                                .text
+                                    span
+                                    | #{event.nome}
+                                .text
+                                    span
+                                    | #{event.local}
+                                .text
+                                    span
+                                    | #{event.data}
+                                a.btn-secondary.btn-sm(href=event.bilhetes) Comprar Bilhetes
+        script.
+            feather.replace()

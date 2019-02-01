@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    .card
+        .card-header
+            h2
+                b Register
+        .card-body
+            include messages.pug
+            form(action="/users/register", method="post")
+                .form-group
+                    label Name:
+                    input.form-control(type="text", name="name", placeholder="Your name" required)
+                .form-group
+                    label Email:
+                    input.form-control(type="text", name="email", placeholder="Email address" required)
+                .form-group
+                    label Password: 
+                    input.form-control(type="password", name="password", placeholder="Enter Password" required)
+                button.btn-outline-secondary.btn-sm(type="submit") Register
+            
